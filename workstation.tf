@@ -4,9 +4,9 @@ module "ec2_instance" {
   name = "workstation"
   
   instance_type          = "t2.micro"
-  ami = "ami-03265a0778a880afb" # devops-practice which is cenots8
+  ami = "ami-030f05bacaf4716fd" # devops-practice which is cenots8
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-  subnet_id              = "subnet-0490cab6f828612f5" # replace with your subnet id
+  subnet_id              = "subnet-07945b696e6f560b8" # replace with your subnet id
   user_data = file("docker.sh")
   tags = {
     Terraform   = "true"

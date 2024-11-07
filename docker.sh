@@ -10,7 +10,7 @@ LOGSDIR=/tmp
 SCRIPT_NAME=$(basename "$0")
 LOGFILE=$LOGSDIR/$SCRIPT_NAME-$DATE.log
 
-echo -e "$Y This script runs on CentOS 8 $N"
+echo -e "$Y This script runs on ubuntu 22.04 $N"
 
 if [[ "$USERID" -ne 0 ]];
 then
@@ -28,7 +28,7 @@ VALIDATE(){
     fi
 }
 
-yum install -y yum-utils &>>$LOGFILE
+apt install -y yum-utils &>>$LOGFILE
 
 VALIDATE $? "yum-utils package installed"
 
@@ -36,7 +36,7 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 
 VALIDATE $? "Docker Repo added"
 
-yum install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y &>>$LOGFILE
+apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y &>>$LOGFILE
 
 VALIDATE $? "Docker components are installed"
 
